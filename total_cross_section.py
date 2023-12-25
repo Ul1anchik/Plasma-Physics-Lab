@@ -20,7 +20,7 @@ def build_table1(poly):
         total_cross = math.exp(poly(Ej))
         x.append(E)
         y.append(total_cross)
-        print(Ej, total_cross)
+        # print(Ej, total_cross)
 
         E *= STEP
 
@@ -60,7 +60,7 @@ def build_table4(kin_energy, cross): #by Kozlov
         y = [4.42286*float(line.strip()) for line in array]
     return x,y
 
-def build_table5(const):  #by Lukianov
+def build_table5(const = 300):  #by Lukianov
     x=[i for i in range(100, 100000, 100 )]
     y = []
     for i in x:
@@ -68,7 +68,7 @@ def build_table5(const):  #by Lukianov
         y.append(values_y)
     return x,y
 
-def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cross, constants, kin_energy, cross, const, title):
+def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cross, constants, kin_energy, cross, title):
     coef = np.loadtxt(filname)
     poly = np.polynomial.Chebyshev(coef)
 
@@ -84,7 +84,7 @@ def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cros
     x,y = build_table4(kin_energy, cross) #by Kozlov
     ax.plot(x, y, color="blue") 
 
-    x,y = build_table5(const) #by Lukianov
+    x,y = build_table5(const = 300) #by Lukianov
     ax.plot(x, y, color="green") 
     
     ax.set_title(title)
@@ -99,9 +99,9 @@ def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cros
 
 fig = plt.figure()
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 1), "bkj_Dp.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh T cross.txt",  "building_curves/constants T.txt", "building_curves/kozlov_Ekin T.txt", "building_curves/kozlov_cross_section T.txt", 20000, "Total cross section $D(D,p) T$"
+    fig.add_subplot(1, 2, 1), "bkj_Dp.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh T cross.txt",  "building_curves/constants T.txt", "building_curves/kozlov_Ekin T.txt", "building_curves/kozlov_cross_section T.txt",  "Total cross section $D(D,p) T$"
 )
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 2), "bkj_Dn.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh D cross.txt", "building_curves/constants D.txt", "building_curves/kozlov_Ekin D.txt", "building_curves/kozlov_cross_section D.txt", 300, "Total cross section $D(D,n)^3 He$"
+    fig.add_subplot(1, 2, 2), "bkj_Dn.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh D cross.txt", "building_curves/constants D.txt", "building_curves/kozlov_Ekin D.txt", "building_curves/kozlov_cross_section D.txt", "Total cross section $D(D,n)^3 He$"
 )
 plt.show()

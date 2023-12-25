@@ -25,10 +25,8 @@ def plot_total_cross_section(ax: plt.Axes, const):
 
 fig = plt.figure()
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 1), 20000
+    fig.add_subplot(1, 2, 1), 300
 )
-plot_total_cross_section(
-    fig.add_subplot(1, 2, 2), 300
-)
+
 plt.show()
      
