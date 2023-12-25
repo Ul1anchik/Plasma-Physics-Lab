@@ -28,9 +28,9 @@ def plot_total_cross_section(ax: plt.Axes, table_kin_energy, table_cross):
 
 fig = plt.figure()
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 1), "kinetick E bosch.txt", "bocsh T cross.txt"
+    fig.add_subplot(1, 2, 1), "building_curves/kinetick E bosch.txt", "building_curves/bocsh T cross.txt"
 )
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 2), "kinetick E bosch.txt", "bocsh D cross.txt"
+    fig.add_subplot(1, 2, 2), "building_curves/kinetick E bosch.txt", "building_curves/bocsh D cross.txt"
 )
 plt.show()

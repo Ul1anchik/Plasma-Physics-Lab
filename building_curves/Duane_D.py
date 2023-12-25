@@ -5,11 +5,11 @@ from scipy.optimize import curve_fit
 from numpy import array, exp 
 import math
    
-with open("kinetick_energy_D.txt", 'r') as file:
+with open("building_curves/kinetick_energy_D.txt", 'r') as file:
         array = file.readlines()
         values_x = [float(line.strip()) for line in array]
 
-with open("cross_section D.txt", 'r') as file:
+with open("building_curves/cross_section D.txt", 'r') as file:
         array = file.readlines()
         values_y = [float(line.strip()) for line in array]
 
