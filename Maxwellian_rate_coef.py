@@ -5,25 +5,23 @@ from numpy import exp
 from scipy.integrate import quad
 import scipy.integrate as spi
 
-def build_table1(poly, filname):
 
-    coef = np.loadtxt(filname)
-    poly = np.polynomial.Chebyshev(coef)
-
-    EjU = 0.6357 * 10**9
-    EjL = 0.5000 * 10**3
-    BOTTOM = EjL
-    TOP = EjU
-    N = 100
-    STEP = pow(TOP / BOTTOM, 1 / N)
-    cross_section = []
-    E = BOTTOM
-    while E <= TOP:
-        Ej = 2 * (math.log(E / EjL) / math.log(EjU / EjL)) - 1
-        total_cross = math.exp(poly(Ej))
-        cross_section.append(total_cross)
-        E *= STEP
-    return cross_section
+coef = np.loadtxt("bkj_Dp.txt")
+poly = np.polynomial.Chebyshev(coef)
+EjU = 0.6357 * 10**9
+EjL = 0.5000 * 10**3
+BOTTOM = EjL
+TOP = EjU
+N = 100
+STEP = pow(TOP / BOTTOM, 1 / N)
+cross_section = []
+E = BOTTOM
+while E <= TOP:
+    Ej = 2 * (math.log(E / EjL) / math.log(EjU / EjL)) - 1
+    total_cross = math.exp(poly(Ej))
+    cross_section.append(total_cross)
+    E *= STEP
+  
 
 # T = [i for i in range(200, 100000, 100)]
 Vo = 2.18769126379E+08 #atomic unit of velocity
@@ -67,9 +65,6 @@ plt.yscale("log")
 plt.xscale("log")
 plt.show() 
 
-def plot_total_cross_section(ax: plt.Axes, filname, title):
-    coef = np.loadtxt(filname)
-    poly = np.polynomial.Chebyshev(coef)
     
     
     
