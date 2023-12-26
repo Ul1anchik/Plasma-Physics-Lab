@@ -6,7 +6,7 @@
 &#x1F7E7; a curve using B.H.Duane parameterization formula
 &#x1F7E6; a curve using B.N.Kozlov parameterization formula
 
-![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/c3f9411f-395c-4417-b8e6-e60735d0b59b)
+![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/55cc4c91-67a4-486e-9f64-881210f6afa4)
 &#x1F7E9; a curve using S.U.Lukianov parameterization formula
 
 # Maxwellian rate coefficient D(D,p)T and D(D,n)3He
