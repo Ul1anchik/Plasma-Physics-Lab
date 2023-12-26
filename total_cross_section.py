@@ -26,7 +26,7 @@ def build_table1(poly):
 
     return (x, y)
 
-def build_table2(table_kin_energy, table_cross): #H.S.Bosch
+def build_table_Bosch(table_kin_energy, table_cross): #H.S.Bosch
 
     with open(table_kin_energy, 'r') as file:
         array = file.readlines()
@@ -36,7 +36,7 @@ def build_table2(table_kin_energy, table_cross): #H.S.Bosch
         y = [float(line.strip()) for line in array]
     return x,y
 
-def build_table3(constants): #B.H.Duane
+def build_table_Duane(constants): #B.H.Duane
 
     x = [i for i in range(1000,5000000,1000)]
     y = []
@@ -50,7 +50,7 @@ def build_table3(constants): #B.H.Duane
         y.append(values_y)
     return x,y
 
-def build_table4(kin_energy, cross): #by Kozlov
+def build_table_Kozlov(kin_energy, cross): #by Kozlov
 
     with open(kin_energy, 'r') as file:
         array = file.readlines()
@@ -60,7 +60,7 @@ def build_table4(kin_energy, cross): #by Kozlov
         y = [4.42286*float(line.strip()) for line in array]
     return x,y
 
-def build_table5(const = 300):  #by Lukianov
+def build_table_Likianov(const = 300):  #by Lukianov
     x=[i for i in range(100, 100000, 100 )]
     y = []
     for i in x:
@@ -75,16 +75,16 @@ def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cros
     x, y = build_table1(poly)
     ax.plot(x, y, color="black")
 
-    x, y = build_table2(table_kin_energy, table_cross) #by H.S.Bosch
+    x, y = build_table_Bosch(table_kin_energy, table_cross) #by H.S.Bosch
     ax.plot(x, y, color="red") 
 
-    x,y = build_table3(constants) #by B.H.Duane
+    x,y = build_table_Duane(constants) #by B.H.Duane
     ax.plot(x, y, color="orange") 
 
-    x,y = build_table4(kin_energy, cross) #by Kozlov
+    x,y = build_table_Kozlov(kin_energy, cross) #by Kozlov
     ax.plot(x, y, color="blue") 
 
-    x,y = build_table5(const = 300) #by Lukianov
+    x,y = build_table_Likianov(const = 300) #by Lukianov
     ax.plot(x, y, color="green") 
     
     ax.set_title(title)

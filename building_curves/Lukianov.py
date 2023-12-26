@@ -4,10 +4,10 @@ import numpy as np
 from numpy import array, exp 
 
 def build_table(const):  
-    x=[i for i in range(1000, 100000, 100 )]
+    x=[i for i in range(100, 100000, 100 )]
     y = []
     for i in x:
-        values_y = (10**(-24))*(const/i)*(exp((-46)/math.sqrt(i)))
+        values_y = 1000 *(10**(-24))*(const/i)*(exp((-46)/math.sqrt(i)))
         y.append(values_y)
     return x,y
 
