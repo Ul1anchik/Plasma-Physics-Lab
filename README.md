@@ -4,8 +4,11 @@
 ![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/e86b80d1-f8c1-4898-9eae-8a00af1272e1)
 
 &#x1F7E5; a curve using H.S.Bosch parameterization formula 
+
 &#x1F7E7; a curve using B.H.Duane parameterization formula
+
 &#x1F7E6; a curve using B.N.Kozlov parameterization formula
+
 &#x1F7E9; a curve using S.U.Lukianov parameterization formula
 
 # Maxwellian rate coefficient D(D,p)T and D(D,n)3He
