@@ -61,12 +61,14 @@ def build_table_Kozlov(kin_energy, cross): #by Kozlov
     return x,y
 
 def build_table_Likianov(const = 300):  #by Lukianov
-    x=[i for i in range(100, 100000, 100 )]
+    x = [i for i in range(1,5000,1)] 
     y = []
+    x_ = []
     for i in x:
-        values_y = 1000*(const/i)*(exp((-46)/math.sqrt(i)))
+        values_y = 1000*((const/i)*exp(-46/math.sqrt(i)))
         y.append(values_y)
-    return x,y
+        x_.append(1000*i)
+    return x_,y
 
 def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cross, constants, kin_energy, cross, title):
     coef = np.loadtxt(filname)

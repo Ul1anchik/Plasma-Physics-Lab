@@ -4,7 +4,7 @@ import numpy as np
 from numpy import array, exp 
 
 def build_table(const):  
-    x=[i for i in range(100, 100000, 100 )]
+    x=[i for i in range(10, 10000, 10 )]
     y = []
     for i in x:
         values_y = 1000*(const/i)*(exp((-46)/math.sqrt(i)))
