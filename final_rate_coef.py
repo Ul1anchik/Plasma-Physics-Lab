@@ -61,7 +61,7 @@ def build_table_Bosch(constants): #H.S.Bosch
     for i in x:
         Q = i / (1 - ( (i*(Const['C2']+i*(Const['C4']+i*Const['C6'])))/(1+i*(Const['C3']+i*(Const['C5']+i*Const['C7'])))))
         eps = ((Const['Bg']*Const['Bg'])/(4*Q))**(1/3)
-        sigma = Const['C1'] * Q * math.sqrt(eps/(Const['mc']*i**(3)))*exp(-3*eps)
+        sigma = Const['C1'] * Q * math.sqrt(eps/(Const['mc^2']*i**(3)))*exp(-3*eps)
         R = n*n*1/2*sigma
         y.append(sigma)
 
@@ -79,8 +79,8 @@ def build_table_Lukianov():
 
 def plot_total_cross_section(ax: plt.Axes, filname, constants, title):
 
-    x, y = build_table_rate_coef(filname)
-    ax.plot(x, y, color="blue", markersize = 1, label='using a formula through a single integral')
+    # x, y = build_table_rate_coef(filname)
+    # ax.plot(x, y, color="blue", markersize = 1, label='using a formula through a single integral')
 
     x, y = build_table_Bosch(constants) #by H.S.Bosch
     ax.plot(x, y, color="red", label='using H.S.Bosch formula') 
@@ -101,10 +101,10 @@ def plot_total_cross_section(ax: plt.Axes, filname, constants, title):
 
 fig = plt.figure()
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 1), "bkj_Dp.txt","building_rate_coef/constants_T_bosch2.txt",  "Maxwellian rate coefficient $D(D,p) T$"
+    fig.add_subplot(1, 2, 1), "bkj_Dp.txt","building_rate_coef/constants_T_bosch.txt",  "Maxwellian rate coefficient $D(D,p) T$"
 )
 plot_total_cross_section(
-    fig.add_subplot(1, 2, 2), "bkj_Dn.txt",  "building_rate_coef/constants_D_bosch2.txt", "Maxwellian rate coefficient $D(D,n)^3 He$"
+    fig.add_subplot(1, 2, 2), "bkj_Dn.txt",  "building_rate_coef/constants_D_bosch.txt", "Maxwellian rate coefficient $D(D,n)^3 He$"
 )
 plt.show()
 
