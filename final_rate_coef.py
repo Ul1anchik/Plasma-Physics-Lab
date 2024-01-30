@@ -5,35 +5,37 @@ from numpy import exp
 from math import pi
 from scipy.integrate import quad
 
+from total_cross_section import total_cross_sigma
+
 
 n = 10**(20)
 def build_table_rate_coef(filname):
     EjL = 0.5 * 10**3  # eV
     EjU = 0.6357 * 10**9  # eV
     V0 = 2.18769126379 * 10**6  # atomic unit of velocity (m/s)
+    md_kg = 3.34358320*10**(-27)
     md = 3.34358320 / 1.661  # deuteron mass (a.e.m)
     mu = md**2 / (2 * md)  # in centre masses (a.e.m)
     
-    A = mu * (V0**2) / 2000  # eV (a.e.m * m^2 / s^2)
+    A = md_kg * (V0**2) / 2 # eV (a.e.m * m^2 / s^2)
     
     def gamma(T):
         return A / T
     
-    def Ej(y):
-        return 2 * math.log(A * y / EjL, EjU / EjL) - 1
-    
     def integrand(y, T):
-        poly_res = poly(Ej(y))
-        sigma = exp(poly_res)
+        E = y * A
+        assert EjL <= E <= EjU
+        sigma = total_cross_sigma(poly, EjL, EjU, E)
         f = y * exp(-y * gamma(T))
         return sigma * f
     
     coef = np.loadtxt(filname)
-    poly = np.polynomial.Polynomial(coef)
+    poly = np.polynomial.Chebyshev(coef)
     
     LOWER = 10**3
-    UPPER = 10**9
-    STEP = 1.5
+    UPPER = 10**5
+    N = 10
+    STEP = pow(UPPER / LOWER, 1 / N)
     
     T = LOWER
     
@@ -41,10 +43,10 @@ def build_table_rate_coef(filname):
     Rs = []
     while T < UPPER:
         CONST = 2 / math.sqrt(pi) * V0 * gamma(T) ** (3 / 2)
-        integral_res, *_ = quad(lambda y: integrand(y, T), 0, np.inf)
+        integral_res, *_ = quad(lambda y: integrand(y, T), 10**(17), 10**(22))
         R = CONST * integral_res
-        Ts.append(T)
-        Rs.append(integral_res)
+        Ts.append(T/10**3)
+        Rs.append(R/10**34)
         T *= STEP
     return Ts, Rs
 
@@ -79,8 +81,8 @@ def build_table_Lukianov():
 
 def plot_total_cross_section(ax: plt.Axes, filname, constants, title):
 
-    # x, y = build_table_rate_coef(filname)
-    # ax.plot(x, y, color="blue", markersize = 1, label='using a formula through a single integral')
+    x, y = build_table_rate_coef(filname)
+    ax.plot(x, y, color="blue", markersize = 1, label='using a formula through a single integral')
 
     x, y = build_table_Bosch(constants) #by H.S.Bosch
     ax.plot(x, y, color="red", label='using H.S.Bosch formula') 
@@ -91,7 +93,7 @@ def plot_total_cross_section(ax: plt.Axes, filname, constants, title):
 
     ax.set_title(title)
     ax.set_xlabel("T")
-    ax.set_ylabel("R")
+    ax.set_ylabel("$\\langle\sigma V\\rangle$")
     ax.grid(which="minor", alpha=0.5, linestyle="--")
     ax.grid(which="major", alpha=0.5, linestyle="--")
     ax.set_xscale("log")
