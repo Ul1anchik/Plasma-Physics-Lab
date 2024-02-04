@@ -16,8 +16,7 @@ def build_table1(poly):
     E = BOTTOM
 
     while E <= TOP:
-        Ej = 2 * (math.log(E / EjL) / math.log(EjU / EjL)) - 1
-        total_cross = math.exp(poly(Ej))
+        total_cross = total_cross_sigma(poly, EjL, EjU, E)
         x.append(E)
         y.append(total_cross)
         # print(Ej, total_cross)
@@ -25,6 +24,11 @@ def build_table1(poly):
         E *= STEP
 
     return (x, y)
+
+def total_cross_sigma(poly, EjL, EjU, E):
+    Ej = 2 * (math.log(E / EjL) / math.log(EjU / EjL)) - 1
+    total_cross = math.exp(poly(Ej))
+    return total_cross
 
 def build_table_Bosch(table_kin_energy, table_cross): #H.S.Bosch
 
@@ -99,11 +103,12 @@ def plot_total_cross_section(ax: plt.Axes, filname, table_kin_energy, table_cros
     ax.set_ylim([10**(-4), 1000])
 
 
-fig = plt.figure()
-plot_total_cross_section(
-    fig.add_subplot(1, 2, 1), "bkj_Dp.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh T cross.txt",  "building_curves/constants T.txt", "building_curves/kozlov_Ekin T.txt", "building_curves/kozlov_cross_section T.txt",  "Total cross section $D(D,p) T$"
-)
-plot_total_cross_section(
-    fig.add_subplot(1, 2, 2), "bkj_Dn.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh D cross.txt", "building_curves/constants D.txt", "building_curves/kozlov_Ekin D.txt", "building_curves/kozlov_cross_section D.txt", "Total cross section $D(D,n)^3 He$"
-)
-plt.show()
+if __name__ == "__main__":
+    fig = plt.figure()
+    plot_total_cross_section(
+        fig.add_subplot(1, 2, 1), "bkj_Dp.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh T cross.txt",  "building_curves/constants T.txt", "building_curves/kozlov_Ekin T.txt", "building_curves/kozlov_cross_section T.txt",  "Total cross section $D(D,p) T$"
+    )
+    plot_total_cross_section(
+        fig.add_subplot(1, 2, 2), "bkj_Dn.txt", "building_curves/kinetick E bosch.txt", "building_curves/bocsh D cross.txt", "building_curves/constants D.txt", "building_curves/kozlov_Ekin D.txt", "building_curves/kozlov_cross_section D.txt", "Total cross section $D(D,n)^3 He$"
+    )
+    plt.show()
