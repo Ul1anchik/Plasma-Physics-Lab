@@ -12,7 +12,7 @@
 &#x1F7E9; a curve using S.U.Lukianov parameterization formula
 
 # Maxwellian rate coefficient D(D,p)T and D(D,n)3He
-![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/d4abd3ff-8b0d-42e1-90fe-1f1ddb3e028a)
+![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/56d03485-9e27-4a47-b5bf-5c705ca94dd6)
 &#x1F4D8; a curve using a formula through a single integral;
 
 &#x1F4D9; a curve using H.S.Bosch formula;
