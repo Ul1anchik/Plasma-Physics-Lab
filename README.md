@@ -1,3 +1,6 @@
+# Differential cross section D(D,p)T and D(D,n)3He
+![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/87725ef1-bfc1-4fa0-ba4a-eb09737b9957)
+
 # Total cross section D(D,p)T and D(D,n)3He
 
 ![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/357395d0-0ef9-46f8-9f1f-be2c62d24148)
