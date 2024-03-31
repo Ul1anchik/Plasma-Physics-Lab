@@ -1,5 +1,7 @@
-# Differential cross section D(D,p)T and D(D,n)3He
+# Differential cross section D(D,p)T and D(D,n)3He at 0 $^{\circ}$ 
 ![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/87725ef1-bfc1-4fa0-ba4a-eb09737b9957)
+# Differential cross section D(D,p)T and D(D,n)3He 
+![image](https://github.com/Ul1anchik/Plasma-Physics-Lab/assets/142611307/954e40f4-1536-4f60-a7be-0d10eb5e08b6)
 
 # Total cross section D(D,p)T and D(D,n)3He
 
