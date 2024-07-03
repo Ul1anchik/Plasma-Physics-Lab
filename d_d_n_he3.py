@@ -23,9 +23,7 @@ def diff_cross_1(s0, a, angle):
 
 
 # atomic and nuclear data
-def non_linear_change(e):
-    EjL = 0.5e3
-    EjU = 0.6357e9
+def non_linear_change(e, EjL=0.5e3, EjU=0.6357e9):
     return 2 * (np.log(e / EjL)) / (np.log(EjU / EjL)) - 1
 
 
@@ -34,7 +32,8 @@ B = np.loadtxt(COEFS_FOR_LEGENDRE)  # b_{k,j} j = 0 .. 8 k = 0 .. 15
 
 
 def s0_2(e):
-    return np.exp(np.polynomial.Chebyshev(ZERO_B)(non_linear_change(e)))
+    poly = np.polynomial.Chebyshev(ZERO_B)
+    return np.exp(poly(non_linear_change(e)))
 
 
 def diff_cross_2(e, angle):
